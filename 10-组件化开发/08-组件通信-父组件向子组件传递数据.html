@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <mcpn :cmess="message" :cm="movies"></mcpn>
+</div>
+<template id="cpn">
+  <div>
+    <ol>
+      <li v-for="(item,index) in cm">{{index}} -- {{item}}</li>
+    </ol>
+    <h2>{{cmess}}</h2>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  const mcpn = {
+    template: '#cpn',
+    props:['cmess','cm']
+  }
+   const app = new Vue({
+     el: "#app",
+     data: {
+       message: "你好",
+       movies: ['加勒比海盗1','加勒比海盗2','加勒比海盗3','加勒比海盗4']
+     },
+     components: {
+       mcpn
+     }
+   })
+</script>
+</body>
+</html>

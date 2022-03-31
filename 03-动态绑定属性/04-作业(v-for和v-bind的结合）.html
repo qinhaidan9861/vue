@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<!--作业需求：点击列表中的哪一项, 那么该项的文字变成红色-->
+<div id="app">
+  <ol>
+    <li v-for="(item,index) in movies"
+        :class="{active:currentIndex == index}"
+        @click="getClick(index)"
+    >{{index}} -- {{item}}</li>
+  </ol>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+          movies: ['长津湖','长津湖之水门桥','奇迹·笨小孩','少年派'],
+          currentIndex: -1
+        },
+      methods:{
+        getClick:function (index) {
+          if (index == this.currentIndex){
+            this.currentIndex = -1
+          }else {
+            this.currentIndex = index
+          }
+        }
+      }
+    })
+</script>
+</body>
+</html>
